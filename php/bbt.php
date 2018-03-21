@@ -52,7 +52,7 @@ class SignUp{
 //查询类
 class Inquiry{
 	//查询方法
-	public function inquiry(){
+	public function to_check(){
 		global $link;
 
 		$stmt = $link->prepare("SELECT branch, second_branch, adjust FROM messages WHERE name=? AND phone_number=?");
@@ -78,7 +78,6 @@ class Inquiry{
             ];
         }
         echo json_encode($data);
-
 		$stmt->close();
 	}
 }
@@ -97,4 +96,5 @@ if($_POST['action']=='sign_up'){
 //调用Inquiry
 if($_POST['action']=='inquiry'){
 	$inq = new Inquiry();
+    $inq->to_check();
 }
