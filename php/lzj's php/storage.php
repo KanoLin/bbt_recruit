@@ -1,9 +1,9 @@
 <?php
-    $url='localhost:3306';//服务器地址
-    $user='root';//用户名
-    $password='123456';//密码
-    $dateBase='EntryBlank';//数据库名称
-    $table='task';//数据表名称
+    $url='';//服务器地址
+    $user='';//用户名
+    $password='';//密码
+    $dateBase='';//数据库名称
+    $table='';//数据表名称
     $postName=array('name','sex','grade','college','dorm','phone_number','branch','second_branch','adjust','introduction');
 
     //链接数据库
