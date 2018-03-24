@@ -1,5 +1,7 @@
 <?php
+
     include 'connect.php';
+
     $postName=array('name','sex','grade','college','dorm','phone_number','branch','second_branch','adjust','introduction');
 
     //存储
