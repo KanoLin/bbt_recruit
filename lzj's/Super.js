@@ -1,9 +1,7 @@
-var phpURL = "";
-
 $("#submit").click(function () {
     $.ajax({
         type: 'POST',
-        url: 'EntryBlank.php',
+        url: 'bbtEntryBlank.php',
         data: {
             action: 'superquery',
             branch: $('select[name=branch]').val()
