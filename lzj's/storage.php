@@ -1,17 +1,6 @@
 <?php
-    $url='localhost:3306';//服务器地址
-    $user='root';//用户名
-    $password='123456';//密码
-    $dateBase='EntryBlank';//数据库名称
-    $table='task';//数据表名称
+    include 'connect.php';
     $postName=array('name','sex','grade','college','dorm','phone_number','branch','second_branch','adjust','introduction');
-
-    //链接数据库
-    $con=mysqli_connect($url,$user,$password,$dateBase);
-    if (!$con) {die('Could not connect: ' . mysqli_error());}
-    mysqli_set_charset($con,"utf8");
-    //同步时钟
-    date_default_timezone_set("Asia/Shanghai");
 
     //存储
     function save()
@@ -63,6 +52,31 @@
         }
     }
 
+    //后台查询
+    function superQuery()
+    {
+        global $table,$student,$con;
+        $branch0=isset($_POST['branch'])?$_POST['branch']:'';
+        $a=array(12);
+        $back=array();
+		$stmt=mysqli_stmt_init($con);
+        mysqli_stmt_prepare($stmt,"SELECT * FROM $table WHERE branch=?");
+        mysqli_stmt_bind_param($stmt,"s",$branch0);
+        mysqli_stmt_bind_result($stmt,$a[0],$a[1],$a[2],$a[3],$a[4],$a[5],$a[6],$a[7],$a[8],$a[9],$a[10],$a[11]);
+        mysqli_stmt_execute($stmt);
+        $i=1;
+        $back[$i++]=array('id','name','sex','grade','college','dorm','phone_number','branch','second_branch','adjust','introduction','time');
+        while (mysqli_stmt_fetch($stmt))
+        {
+            $back[$i]=array();
+            for ($j=0;$j<12;$j++){
+                $back[$i][$j]=$a[$j];
+            }
+            $i++;
+        }
+        $back[0]=$i-1;
+        echo json_encode($back);
+    }
     
     //接受指令
     if (isset($_POST['action'])){
@@ -75,6 +89,7 @@
         {
             case 'sign_up':save();break;
             case 'inquiry':query();break;
+            case 'superquery':superQuery();break;
         }
     }
 
