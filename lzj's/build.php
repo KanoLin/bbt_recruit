@@ -1,9 +1,9 @@
 <?php
 function connect()
 {
-    $dataBase='EntryBlank';
-    $table='task';
-    $con=mysqli_connect('localhost:3306','root','123456');
+    $dataBase='EXAMPLE_DATABASE';
+    $table='EXAMPLE_TABLE';
+    $con=mysqli_connect('EXAMPLE_URL','EXAMPLE_USER','EXAMPLE_PASSWORD');
     if (!$con) {die('Could not connect: ' . mysqli_error());}
     mysqli_query($con,"set names utf8");
     $str1='CREATE DATABASE IF NOT EXISTS '.$dataBase.' DEFAULT CHARSET utf8 COLLATE utf8_general_ci;';

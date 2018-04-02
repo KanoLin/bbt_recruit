@@ -1,9 +1,9 @@
 <?php
-    $url='localhost:3306';//服务器地址
-    $user='root';//用户名
-    $password='123456';//密码
-    $dateBase='EntryBlank';//数据库名称
-    $table='task';//数据表名称
+    $url='EXAMPLE_URL';//服务器地址
+    $user='EXAMPLE_USER';//用户名
+    $password='EXAMPLE_PASSWORD';//密码
+    $dateBase='EXAMPLE_DATABASE';//数据库名称
+    $table='EXAMPLE_TABLE';//数据表名称
     //链接数据库
     $con=mysqli_connect($url,$user,$password,$dateBase);
     if (!$con) {die('Could not connect: ' . mysqli_error());}
